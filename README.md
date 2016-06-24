@@ -10,8 +10,6 @@ HTML, CSS, Vanilla Javascript, jQuery, ejs
 - [ ] Users with authentication login
 - [ ] Users must be able to create/post topics and comments
 - [ ] comment counter
-- [ ] topic voting system
-- [ ] topics display based on poplularity based on topic voting system
 - [ ] posts/comments should display username who posted
 - [ ] css styling
 
