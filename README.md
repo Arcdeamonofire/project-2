@@ -18,6 +18,13 @@ HTML, CSS, Vanilla Javascript, jQuery, ejs
 
 # Wireframe
 
+![alt text](https://github.com/Arcdeamonofire/project-2/blob/master/images/Wireframe.png)
+
+Two ideas for an approach to the look when I start implementing css
+![alt text](https://github.com/Arcdeamonofire/project-2/blob/master/images/forum-thumb.png)
+
+![alt text](https://github.com/Arcdeamonofire/project-2/blob/master/images/reddit.png)
+
 # Technologies Used (API Reference?)
 
 # Approach
