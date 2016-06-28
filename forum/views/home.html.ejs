@@ -4,8 +4,35 @@
 
 </head>
 <body>
+	<% if(user !== undefined) { %>
+		<form action="/login/destroy?_method=DELETE" method="POST">
+			<input type="submit" value="Log Out" />
+		</form>
+	<% } else{ %>
+		<a href="/login">Login</a>
+	<% }%>
+
+
+
 	<h1>This is the forum home page</h1>
 
-	<a href="/login">Login</a>
+	<% if(user !== undefined) { %>
+		<h1>Welcome, <%= user %></h1>
+	<% } else{ %>
+		<p>Hello Please login to continue</p>
+	<% }%>
+
+	<p>Combine home page and welcome page, so that the homepage looks like the welcome page when someone is logged in.</p>
+
+	<p>if a forum post exists it should appear here, along with a link to add new posts</p>
+
+	<a href="/forum/new">New Post</a>
+
+		<% for(i=0; i<posts.length; i++){ %>
+		<div>
+		<a href="#"><%=posts[i].title%></a>
+		</div>
+	<% } %>
+
 </body>
 </html>

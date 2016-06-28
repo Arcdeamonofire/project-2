@@ -1,8 +1,10 @@
 var mongoose = require('mongoose');
 var commentSchema = require('./comment').schema;
+// var userSchema = require('./user').schema;
 
 var postSchema = mongoose.Schema({
-	user: String,
+	author: String,
+	title: String,
 	body: String,
 	comments: [commentSchema]
 })

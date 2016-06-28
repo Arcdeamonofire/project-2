@@ -26,17 +26,26 @@ app.use('/forum', forumController);
 app.use('/login', loginController);
 
 app.get('/', function(req,res){
-	res.render('home.html.ejs');
+	Post.find({}, function(err, foundPosts){
+		// console.log(foundPosts);
+		res.render('home.html.ejs', {
+			posts: foundPosts,
+			user: undefined
+		});
+	})
+	
 })
 
-app.get('/welcome/:username', function(req,res){
-	// res.send(req.params);
-	if(req.params.username !== req.session.name){
-		res.redirect('/');
-	}
+app.get('/:username', function(req,res){
+	// if(req.params.username !== req.session.name){
+	// 	res.redirect('/');
+	// }
     if(req.session.name !== undefined){
-		res.render('welcome.html.ejs',{
-			user: req.session.name
+    	Post.find({}, function(err, foundPosts){
+			res.render('home.html.ejs',{
+				user: req.session.name,
+				posts: foundPosts
+			});
 		});
     } else {
         res.redirect('/');
