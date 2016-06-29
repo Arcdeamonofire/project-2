@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title>New Comment</title>
+
+</head>
+<body>
+	<form action="/forum/<%=page%>" method="POST">
+		<input type="hidden" name="post" value="<%=page%>">
+		<input type="hidden" name="user" value="<%=user%>" />
+		<br/>
+		<textarea name="body" class="post" style="width:250px;height:150px;"></textarea>
+				<br/>
+		<input type="submit" value="Post" />
+	</form>
+
+</body>
+</html>

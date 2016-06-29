@@ -29,9 +29,9 @@
 	<a href="/forum/new">New Post</a>
 
 		<% for(i=0; i<posts.length; i++){ %>
-		<div>
-		<a href="#"><%=posts[i].title%></a>
-		</div>
+			<div>
+			<a href="/forum/<%=posts[i]._id%>"> <%=posts[i].title%></a>
+			</div>
 	<% } %>
 
 </body>

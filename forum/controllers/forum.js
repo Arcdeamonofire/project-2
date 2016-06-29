@@ -15,6 +15,22 @@ router.get('/new', function(req, res){
     }
 })
 
+router.get('/:post', function(req,res){
+	Post.find({_id:req.params.post}, function(err, foundPost){
+		res.render('forum/show.html.ejs',{
+			post: foundPost,
+			page: req.params.post
+		});
+	});
+});
+
+router.get('/:post/new', function(req,res){
+	res.render('forum/comment.html.ejs', {
+		page: req.params.post,
+		user: req.session.name
+	});
+});
+
 router.post('/new', function(req, res){
 	Post.create(req.body, function(err, post){
 		console.log(req.body);
@@ -25,6 +41,10 @@ router.post('/new', function(req, res){
 
 		res.redirect('/' + req.session.name);
 	});
+});
+
+router.post('/:post', function(req,res){
+	res.send(req.body);
 });
 
 

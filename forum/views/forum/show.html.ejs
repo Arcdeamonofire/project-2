@@ -1,0 +1,16 @@
+<html>
+<head>
+	<title><%=post[0].title%></title>
+</head>
+<body>
+	<a href="/">Home</a>
+	<div>
+		<h1><%=post[0].title%></h1>
+		<h3>By: <%=post[0].author%></h3>
+	</div>
+	<p><%=post[0].body%></p>
+
+	<a href="<%=page%>/new">Comment</a>
+<!-- 	need to set up an if statment for req.session.name being undefined when someone tries to post a comment -->
+</body>
+</html>
