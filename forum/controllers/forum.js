@@ -33,7 +33,6 @@ router.get('/:post/new', function(req,res){
 
 router.post('/new', function(req, res){
 	Post.create(req.body, function(err, post){
-		console.log(req.body);
 		User.findOne({name : post.author}, function (err, foundUser){
 			foundUser.posts = [post];
 			foundUser.save();
@@ -44,7 +43,17 @@ router.post('/new', function(req, res){
 });
 
 router.post('/:post', function(req,res){
-	res.send(req.body);
+	Comment.create(req.body, function(err, comment){
+		Post.findOne({_id:comment.post}, function(err, foundPost){
+			foundPost.comments = [comment];
+			foundPOst.save();
+		});
+		User.findOne({name: comment.user}, function(err, foundUser){
+			foundUser.comments = [comment];
+			foundUser.save();
+		})
+		res.redirect('/'+req.params.post);
+	});
 });
 
 
