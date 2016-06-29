@@ -17,42 +17,46 @@ router.get('/new', function(req, res){
 
 router.get('/:post', function(req,res){
 	Post.find({_id:req.params.post}, function(err, foundPost){
-		res.render('forum/show.html.ejs',{
-			post: foundPost,
-			page: req.params.post
+		Comment.find({post:req.params.post}, function(err, foundComment){
+			res.render('forum/show.html.ejs',{
+				post: foundPost,
+				comments: foundComment,
+				page: req.params.post
+			});
 		});
 	});
 });
 
 router.get('/:post/new', function(req,res){
-	res.render('forum/comment.html.ejs', {
-		page: req.params.post,
-		user: req.session.name
-	});
+	if(req.session.name !== undefined){
+		res.render('forum/comment.html.ejs', {
+			page: req.params.post,
+			user: req.session.name
+		});
+	} else {
+		res.redirect('/login');
+	}
 });
 
 router.post('/new', function(req, res){
 	Post.create(req.body, function(err, post){
 		User.findOne({name : post.author}, function (err, foundUser){
-			foundUser.posts = [post];
-			foundUser.save();
+			foundUser.posts.push(post);
+			foundUser.save(function(err){
+				res.redirect('/' + req.session.name);
+			});
 		});
-
-		res.redirect('/' + req.session.name);
 	});
 });
 
 router.post('/:post', function(req,res){
 	Comment.create(req.body, function(err, comment){
-		Post.findOne({_id:comment.post}, function(err, foundPost){
-			foundPost.comments = [comment];
-			foundPOst.save();
+		Post.findOne({_id:req.params.post}, function(err, foundPost){
+			// console.log('this is a post:' + foundPost);
+			foundPost.comments.push(comment);
+			foundPost.save();
 		});
-		User.findOne({name: comment.user}, function(err, foundUser){
-			foundUser.comments = [comment];
-			foundUser.save();
-		})
-		res.redirect('/'+req.params.post);
+		res.redirect('/forum/'+req.params.post);
 	});
 });
 

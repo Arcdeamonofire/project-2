@@ -4,6 +4,8 @@
 
 </head>
 <body>
+	<a href="/<%=user%>">Home</a>
+	<a href="/forum/<%=page%>">Back</a>
 	<form action="/forum/<%=page%>" method="POST">
 		<input type="hidden" name="post" value="<%=page%>">
 		<input type="hidden" name="user" value="<%=user%>" />
