@@ -13,11 +13,16 @@
 	<a href="<%=page%>/new">Comment</a>
 
 	<div>
-		<% for(i=0; i<post.comments.length; i++){ %>
+	<% if (post[0].comments.length ===0){ %>
+		<%= console.log(post[0].comments.length) %>
+		<p>No Comments</p>
+	<% } else { %>
+		<% for(i=0; i<post[0].comments.length; i++){ %>
 			<div>
-			<p><%=post.comments[i].body%></p>
-			<p>By:<%=post.comments[i].user%></p>
+			<p><%=post[0].comments[i].body%></p>
+			<p>By:<%=post[0].comments[i].user%></p>
 			</div>
+			<% } %>
 	<% } %>
 	</div>
 <!-- 	need to set up an if statment for req.session.name being undefined when someone tries to post a comment -->

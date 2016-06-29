@@ -9,6 +9,9 @@ var User = require('./models/user.js');
 var Post = require('./models/post.js');
 var Comment = require('./models/comment.js');
 
+var port = process.env.PORT || 3000;
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/forumproject';
+
 var forumController = require('./controllers/forum'),
     loginController     = require('./controllers/login');
 
@@ -53,12 +56,12 @@ app.get('/:username', function(req,res){
 
 });
 
-mongoose.connect('mongodb://localhost:27017/forumproject');
+mongoose.connect(mongoDBURI);
 
 mongoose.connection.once('open', function(){
     console.log('waiting for instructions');
 })
 
-app.listen(3000, function(){
+app.listen(port, function(){
     console.log('listening');
 })
