@@ -1,26 +1,26 @@
 <html>
 <head>
-	<title><%=post[0].title%></title>
+	<title><%=post.title%></title>
 </head>
 <body>
 	<a href="/">Home</a>
 	<div>
-		<h1><%=post[0].title%></h1>
-		<h3>By: <%=post[0].author%></h3>
+		<h1><%=post.title%></h1>
+		<h3>By: <%=post.author%></h3>
 	</div>
-	<p><%=post[0].body%></p>
+	<p><%=post.body%></p>
 
 	<a href="<%=page%>/new">Comment</a>
 
 	<div>
-	<% if (post[0].comments.length ===0){ %>
-		<%= console.log(post[0].comments.length) %>
+	<% if (post.comments.length ===0){ %>
+		<%= console.log(post.comments.length) %>
 		<p>No Comments</p>
 	<% } else { %>
-		<% for(i=0; i<post[0].comments.length; i++){ %>
+		<% for(i=0; i<post.comments.length; i++){ %>
 			<div>
-			<p><%=post[0].comments[i].body%></p>
-			<p>By:<%=post[0].comments[i].user%></p>
+			<p><%=post.comments[i].body%></p>
+			<p>By:<%=post.comments[i].user%></p>
 			</div>
 			<% } %>
 	<% } %>
