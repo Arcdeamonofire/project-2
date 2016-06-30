@@ -8,6 +8,7 @@ var methodOverride = require('method-override');
 var User = require('./models/user.js');
 var Post = require('./models/post.js');
 var Comment = require('./models/comment.js');
+var ejsLayouts = require("express-ejs-layouts");
 
 var port = process.env.PORT || 3000;
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/forumproject';
@@ -15,11 +16,17 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/forumproj
 var forumController = require('./controllers/forum'),
     loginController     = require('./controllers/login');
 
+app.set("view engine","ejs");
+app.set("views","./views");
+
 app.use(session({
     secret: "birdistheword",
     resave: false,
     saveUninitialized: false
 }));
+
+app.use(express.static('public'));
+app.use(ejsLayouts);
 
 app.use(bodyParser.urlencoded({extended:false}));
 
