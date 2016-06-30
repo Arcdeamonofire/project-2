@@ -3,14 +3,14 @@
 	<title><%=post[0].title%></title>
 </head>
 <body>
-	<a href="/<%=post[0].author%>">Home</a>
+	<a class="btn btn-default" role="button" href="/<%=post[0].author%>">Home</a>
 	<div>
 		<h1><%=post[0].title%></h1>
 		<h3>By: <%=post[0].author%></h3>
 	</div>
 	<p><%=post[0].body%></p>
 
-	<a href="<%=page%>/new">Comment</a>
+	<a class="btn btn-default" role="button" href="<%=page%>/new">Comment</a>
 
 	<div>
 	<% if (comments.length === 0){ %>

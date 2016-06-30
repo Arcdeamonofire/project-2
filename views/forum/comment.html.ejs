@@ -4,14 +4,15 @@
 
 </head>
 <body>
-	<a href="/<%=user%>">Home</a>
-	<a href="/forum/<%=page%>">Back</a>
+	<a class="btn btn-default" role="button" href="/<%=user%>">Home</a>
+	<a class="btn btn-default" role="button" href="/forum/<%=page%>">Back</a>
+	<h1>Comment</h1>
 	<form action="/forum/<%=page%>" method="POST">
 		<input type="hidden" name="post" value="<%=page%>">
 		<input type="hidden" name="user" value="<%=user%>" />
-		<br/>
-		<textarea name="body" class="post" style="width:250px;height:150px;"></textarea>
-				<br/>
+		<div class="form-group">
+			<textarea name="body" class="form-control" rows="5"></textarea>
+		</div>
 		<input type="submit" value="Post" />
 	</form>
 
