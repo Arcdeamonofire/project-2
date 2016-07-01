@@ -3,24 +3,26 @@
 	<title><%=post[0].title%></title>
 </head>
 <body>
-	<a class="btn btn-default" role="button" href="/<%=post[0].author%>">Home</a>
+	<a class="btn btn-default btn-xs pull-right" role="button" href="/<%=post[0].author%>">Home</a>
 	<div>
-		<h1><%=post[0].title%></h1>
-		<h3>By: <%=post[0].author%></h3>
+		<div>
+			<h1><%=post[0].title%></h1>
+			<h3>By: <%=post[0].author%></h3>
+		</div>
+		<p><%=post[0].body%></p>
 	</div>
-	<p><%=post[0].body%></p>
+	<a class="btn btn-default btn-xs" role="button" href="<%=page%>/new">Comment</a>
 
-	<a class="btn btn-default" role="button" href="<%=page%>/new">Comment</a>
-
-	<div>
+	<div class="comments">
 	<% if (comments.length === 0){ %>
 		<p>No Comments</p>
 	<% } else { %>
-		<% for(i=0; i<comments.length; i++){ %>
-			<div>
-			<p><%=comments[i].body%></p>
-			<p>By:<%=comments[i].user%></p>
-			</div>
+		<table class="table table-striped">
+			<% for(i=0; i<comments.length; i++){ %>
+				<tr>
+					<td><p><%=comments[i].body%></p></td>
+				    <td><p>By:<%=comments[i].user%></p></td> 
+				</tr>
 			<% } %>
 	<% } %>
 	</div>
