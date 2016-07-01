@@ -12,7 +12,7 @@ A express app in node.js implementing a CRUD design and using restful routing as
 - [x] Users must be able to create/post topics and comments
 - [x] comment counter
 - [x] posts/comments should display username who posted
-- [ ] css styling
+- [x] css styling
 
 
 # Wireframe
