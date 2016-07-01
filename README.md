@@ -7,10 +7,10 @@ HTML, CSS, Vanilla Javascript, jQuery, ejs
 # Synopsis
 
 # Potential MVP
-- [ ] Users with authentication login
-- [ ] Users must be able to create/post topics and comments
-- [ ] comment counter
-- [ ] posts/comments should display username who posted
+- [x] Users with authentication login
+- [x] Users must be able to create/post topics and comments
+- [x] comment counter
+- [x] posts/comments should display username who posted
 - [ ] css styling
 
 
