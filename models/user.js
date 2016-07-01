@@ -4,7 +4,7 @@ var commentSchema = require('./comment').schema;
 
 var userSchema = mongoose.Schema({
     name: { type: String, unique: true },
-    password: String,
+    password: String || Number,
     posts: [postSchema],
     comments: [commentSchema]
 })
