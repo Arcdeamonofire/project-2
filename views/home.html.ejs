@@ -6,17 +6,19 @@
 </head>
 <body>
 	<% if(user !== undefined) { %>
-		<p class="pull-right">Welcome, <%= user %></p>
-	<% } else{ %>
-		<p class="pull-right">Hello Please login to continue</p>
-	<% }%>
-	<% if(user !== undefined) { %>
 		<form action="/login/destroy?_method=DELETE" method="POST">
 			<input type="submit" value="Log Out" class="btn btn-default btn-xs pull-right"/>
 		</form>
+		<p class="pull-right">Welcome, <%= user %>   ||</p>
+
+
 	<% } else{ %>
 		<a class="btn btn-default btn-xs pull-right" role="button" href="/login">Login</a>
+		<p class="pull-right">Hello Please login to continue</p>
+		
 	<% }%>
+
+
 
 	<h1 class="text-center">Forum Homepage</h1>
 	<div>

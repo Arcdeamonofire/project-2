@@ -37,7 +37,6 @@ app.use('/login', loginController);
 
 app.get('/', function(req,res){
 	Post.find({}, function(err, foundPosts){
-		// console.log(foundPosts);
 		res.render('home.html.ejs', {
 			posts: foundPosts,
 			user: undefined
