@@ -35,6 +35,7 @@ app.use(methodOverride('_method'));
 app.use('/forum', forumController);
 app.use('/login', loginController);
 
+//initial home page load before login
 app.get('/', function(req,res){
 	Post.find({}, function(err, foundPosts){
 		res.render('home.html.ejs', {
@@ -45,6 +46,7 @@ app.get('/', function(req,res){
 	
 })
 
+//homepage load after login
 app.get('/:username', function(req,res){
 	// if(req.params.username !== req.session.name){
 	// 	res.redirect('/');

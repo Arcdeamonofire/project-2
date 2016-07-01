@@ -5,6 +5,7 @@ var User = require('../models/user.js');
 var Post = require('../models/post.js');
 var Comment = require('../models/comment.js');
 
+//new post page
 router.get('/new', function(req, res){
     if(req.session.name !== undefined){
 		res.render('forum/new.html.ejs',{
@@ -15,6 +16,7 @@ router.get('/new', function(req, res){
     }
 })
 
+//particulare post page
 router.get('/:post', function(req,res){
 	Post.find({_id:req.params.post}, function(err, foundPost){
 		Comment.find({post:req.params.post}, function(err, foundComment){
@@ -27,6 +29,7 @@ router.get('/:post', function(req,res){
 	});
 });
 
+//new comment page
 router.get('/:post/new', function(req,res){
 	if(req.session.name !== undefined){
 		res.render('forum/comment.html.ejs', {
@@ -38,6 +41,7 @@ router.get('/:post/new', function(req,res){
 	}
 });
 
+// create a post
 router.post('/new', function(req, res){
 	Post.create(req.body, function(err, post){
 		User.findOne({name : post.author}, function (err, foundUser){
@@ -49,6 +53,7 @@ router.post('/new', function(req, res){
 	});
 });
 
+//create a comment
 router.post('/:post', function(req,res){
 	Comment.create(req.body, function(err, comment){
 		Post.findOne({_id:req.params.post}, function(err, foundPost){

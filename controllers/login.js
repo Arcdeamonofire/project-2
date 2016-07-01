@@ -5,14 +5,17 @@ var User = require('../models/user.js');
 var Post = require('../models/post.js');
 var Comment = require('../models/comment.js');
 
+//sign up page
 router.get('/new', function(req, res){
 	res.render('users/new.html.ejs');
 });
 
+//login page
 router.get('/', function(req, res){
 	res.render('users/login.html.ejs');
 })
 
+//adding a new login
 router.post('/new', function(req, res){
 	req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
 	req.session.name = req.body.name;
@@ -21,6 +24,7 @@ router.post('/new', function(req, res){
 	});
 });
 
+//loging in
 router.post('/', function(req, res){
 	User.findOne({name:req.body.name}, function(err, foundUser){
 		if(bcrypt.compareSync(req.body.password, foundUser.password)){
@@ -32,6 +36,7 @@ router.post('/', function(req, res){
 	});
 });
 
+//logging out
 router.delete('/destroy', function(req,res){
 	req.session.destroy(function(err){
         res.redirect('/');
